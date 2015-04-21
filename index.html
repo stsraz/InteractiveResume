@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/WebResume/">
+  <meta charset="utf-8">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+</head>
+<body ng-app="resumeApp">
+  <header>
+    <nav class="nav navbar navbar-default">
+      <ul>
+        <li><a href="/WebResume/">Joseph Rasmussen</a></li>
+        <li><a href="/WebResume/experience">Experience</a></li>
+        <li><a href="/WebResume/skills">Skills</a></li>
+        <li><a href="/WebResume/contact">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div ng-view></div>
+  <!-- AngularJS -->
+  <script src="libraries/angularjs/angular.js"></script>
+  <script src="libraries/angularjs/angular-route.js"></script>
+  <!-- resumeApp -->
+  <script src="app/app.js"></script>
+</body>
+</html>
