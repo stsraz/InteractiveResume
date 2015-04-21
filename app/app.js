@@ -1,6 +1,6 @@
 (function(){
   angular.module('resumeApp', ['ngRoute'])
-    .config(function($routeProvider,$locationProvider){
+    .config(function($routeProvider){
       $routeProvider.when('/', {
         templateUrl: 'app/partials/home.html'
       }).when('/experience', {
@@ -10,6 +10,5 @@
       }).when('/contact', {
         templateUrl: 'app/partials/contact.html'
       }).otherwise({redirectTo: '/'});
-      $locationProvider.html5Mode(true);
     });
 })();
