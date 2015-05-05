@@ -4,16 +4,29 @@
   <meta charset="utf-8">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+  <!-- Custom Styling -->
+  <link rel='stylesheet' href='app/css/style.css'>
+  <link rel='stylesheet' href='app/css/tracker.css'>
 </head>
 <body ng-app="resumeApp">
   <header>
-    <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav">
-        <li><a href="#/">Joseph Rasmussen</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact Me</a></li>
-      </ul>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class='container'>
+        <div class='navbar-header'>
+          <a class='navbar-brand' href="#/">Joseph Rasmussen</a>
+        </div>
+        <ul class="nav navbar-nav nav-pills navbar-right">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Projects <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#tracker">Tracker</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact Me</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
   <div ng-view></div>
@@ -26,5 +39,12 @@
   <script src="libraries/angularjs/angular-route.js"></script>
   <!-- resumeApp -->
   <script src="app/app.js"></script>
+  <script src="app/routes.js"></script>
+  <!-- trackerApp Controllers-->
+  <script src="app/js/controllers/tracker.js"></script>
+  <!-- customUI Controllers -->
+  <script src="app/js/controllers/buttons.js"></script>
+  <!-- customUI Directives -->
+  <script src="app/js/directives/buttons.js"></script>
 </body>
 </html>

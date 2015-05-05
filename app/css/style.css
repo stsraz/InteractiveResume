@@ -1,0 +1,28 @@
+body {
+  padding-top:55px;
+}
+
+.hook {
+  height: 400px;
+}
+
+.hookDivider {
+  height: 100px;
+}
+
+#hook1 {
+  background-color: rgb(128, 0, 0);
+}
+
+#hook2 {
+  background-color: rgb(0, 102, 204);
+}
+
+#hook3 {
+  background-color: rgb(128, 0, 0);
+}
+
+#carousel-home {
+  width: 100%;
+  height: auto;
+}
