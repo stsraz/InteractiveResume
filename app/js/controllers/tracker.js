@@ -1,0 +1,11 @@
+(function(){
+  angular.module('trackerApp')
+    .controller('trackerController',function($scope){
+      $scope.stepTime;
+      $scope.totalTime;
+      $scope.timeToTarget;
+      $scope.targetTime;
+      $scope.stepNumber;
+      $scope.stepName;      
+    });
+})();
