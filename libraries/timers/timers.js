@@ -2,10 +2,16 @@
 // By Joe Rasmussen
 
 (function() {
-  function Timer(length,countdown) {
-    this.length = length;
-    this.countdown = countdown;
-
-    this.start
+  function Timer(timerEnd) {
+    this.timerLength = timerEnd;
+    this.pause=false;
   }
-});
+  Timer.prototype = {
+    startTimer: function() {
+
+    },
+    pause: function() {
+
+    }
+  }
+})();
