@@ -9,7 +9,8 @@
         templateUrl: 'app/partials/routes/skills/index.html'
       }).when('/tracker', {
         templateUrl: 'app/partials/routes/tracker/index.html',
-        controller: 'trackerController'
+        controller: 'TrackerController',
+        controllerAs: 'TrackerCtrl'
       }).when('/contact', {
         templateUrl: 'app/partials/routes/contact/index.html'
       }).otherwise({redirectTo: '/'});

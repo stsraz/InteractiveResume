@@ -2,8 +2,8 @@
 // By Joe Rasmussen
 
 (function() {
-  function Timer(timerEnd) {
-    this.timerLength = timerEnd;
+  function Timer(timerLength) {
+    this.timerLength = timerLength;
     this.pause=false;
   }
   Timer.prototype = {

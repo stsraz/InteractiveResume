@@ -1,5 +1,5 @@
 (function() {
-  angular.module('customUI').
+  angular.module('trackerApp').
     controller('timersController', function($scope) {
       $scope.timerVar = 0;
       $scope.timerLength;
