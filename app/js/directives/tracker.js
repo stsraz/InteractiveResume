@@ -3,8 +3,8 @@
     .directive('tracker',function() {
       return {
         link: function(scope) {
-          
-        };
+
+        }
       };
     });
 })();
