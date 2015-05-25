@@ -2,7 +2,8 @@
   angular.module('trackerApp')
     .controller('TrackerController',function($scope){
       $scope.pause = false;
-      $scope.currentStep = 0;
+      $scope.trackerRun = false;
+      $scope.currentStep = 1;
 
       // Current Step
       $scope.getStep = function() {
