@@ -1,10 +1,17 @@
 (function(){
   angular.module('trackerApp')
     .controller('TrackerController',function($scope){
+      // Status Variables
       $scope.pause = false;
-      $scope.currentStep = 0;
-
+      $scope.trackerRun = false;
+      // Tracking Object Information
+      var uniqueIdMaster = "Store Number";
+      var uniqueInfo1 = "EON";
+      var uniqueInfo2 = "TC";
+      var uniqueInfo3 = "Location"
+      $scope.trackerHeader = uniqueIdMaster + " | " + uniqueInfo1 + " | " + uniqueInfo2 + " | " + uniqueInfo3;
       // Current Step
+      $scope.currentStep = 1;
       $scope.getStep = function() {
         return $scope.currentStep;
       };
