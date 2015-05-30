@@ -5,7 +5,7 @@
         restrict: 'E',
         controller: 'TimerController',
         link: function(scope,element,attrs) {
-          var myDate = new Date(1432885485000);
+          var myDate = new Date(1432988485000);
           element.countdown({until: myDate, compact: 'true'});
         }
       };
