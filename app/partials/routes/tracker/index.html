@@ -4,14 +4,14 @@
   </div>
   <progress-bar step="currentStep"></progress-bar>
   <div class="row">
-    <div class="col-md-6"><h3>Step Time</h3><timer-up></timer-up></div>
+    <div class="col-md-6"><h3>Step Time</h3><timer-up step="currentStep"></timer-up></div>
     <div class="col-md-6"><h3>Total Time</h3><timer-up></timer-up></div>
   </div>
   <div>
     <!-- Sub Steps Eventually Imported from the Wiki -->
     <tracker-steps step="currentStep"></tracker-steps>
   </div>
-  <div><h3>Time to Escalation</h3><timer-down></timer-down></div>
+  <div><h3>Time to Escalation</h3><timer-down step="currentStep"></timer-down></div>
   <div class="btn-group btn-group-justified" role="group" aria-label="Tracker Controls">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default" ng-click="goBack()">
