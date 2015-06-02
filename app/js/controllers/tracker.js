@@ -3,7 +3,7 @@
     .controller('TrackerController',function($scope){
       // Status Variables
       $scope.pause = false;
-      $scope.trackerRun = false;
+      $scope.trackerStart = false;
       // Tracking Object Information
       var uniqueIdMaster = "Store Number";
       var uniqueInfo1 = "EON";
