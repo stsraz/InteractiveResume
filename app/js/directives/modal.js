@@ -1,17 +1,16 @@
 (function() {
     angular.module('trackerApp')
-      .directive('startModal', function() {
+      .directive('modal', function() {
         return {
           restrict: 'E',
+          replace: true,
           scope: {
-            showModal: "="
+            mode: '='
           },
-          link: function(scope,element) {
-            scope.$watch('showModal', function(newValue, oldValue) {
-              newValue ? element.modal('hide') : element.modal('show');
-            });
+          link: function(scope,element,attrs) {
+            element.modal('show');
           },
-          templateUrl: 'app/partials/directive/start-modal.html'
+          templateUrl: 'app/partials/directive/modal.html'
         };
       });
 })();
