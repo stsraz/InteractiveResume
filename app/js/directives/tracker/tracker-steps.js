@@ -3,7 +3,7 @@
     .directive('trackerSteps', function() {
       return {
         restrict: 'E',
-        templateUrl: 'app/partials/directive/tracker-steps.html',
+        templateUrl: 'app/partials/directive/tracker/tracker-steps.html',
         scope: {
           step: '='
         },
