@@ -3,7 +3,7 @@
     .directive('progressBar', function() {
       return {
         restrict: 'E',
-        templateUrl: 'app/partials/directive/progress-bar.html',
+        templateUrl: 'app/partials/directive/tracker/progress-bar.html',
         scope: {
           step: '='
         },

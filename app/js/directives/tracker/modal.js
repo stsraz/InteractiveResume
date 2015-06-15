@@ -10,7 +10,7 @@
           link: function(scope,element,attrs) {
             element.modal('show');
           },
-          templateUrl: 'app/partials/directive/modal.html'
+          templateUrl: 'app/partials/directive/tracker/modal.html'
         };
       });
 })();
