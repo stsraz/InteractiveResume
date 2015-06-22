@@ -4,12 +4,17 @@
       return {
         restrict: 'E',
         scope: {
-          step: '='
+          step: '=',
+          run: '='
         },
         link: function(scope,element) {
-          var myDate = scope.trackerSteps[0]['escalateTime'];
-          element.countdown({until: myDate, compact: 'true'});
-          scope.$watch('step', function(newValue, oldValue) {
+          scope.$watch('run', function(newValue) {
+            if(newValue) {
+              var myDate = scope.trackerSteps[scope.step]['escalateTime'];
+              element.countdown({until: myDate, compact: 'true'});
+            }
+          });
+          scope.$watch('step', function(newValue) {
             var myDate = scope.trackerSteps[newValue]['escalateTime'];
             element.countdown('option', 'until', myDate);
           });
@@ -21,11 +26,16 @@
       return {
         restrict: 'E',
         scope: {
-          step: '='
+          step: '=',
+          run: '='
         },
         link: function(scope,element) {
-          element.countdown({since: '+0S', format: 'HMS', compact: 'true'});
-          scope.$watch('step', function(newValue,oldValue) {
+          scope.$watch('run', function(newValue) {
+            if(newValue) {
+              element.countdown({since: '+0S', format: 'HMS', compact: 'true'});
+            }
+          });
+          scope.$watch('step', function(newValue) {
             element.countdown('option', 'since', '+0S');
           });
         },

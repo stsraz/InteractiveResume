@@ -1,10 +1,9 @@
 (function() {
   angular.module('trackerApp')
-    .directive('tracker',function() {
+    .directive('tracker', function() {
       return {
-        link: function(scope) {
-
-        }
+        controller: 'TrackerController',
+        controllerAs: 'TrackerCtrl'
       };
     });
 })();

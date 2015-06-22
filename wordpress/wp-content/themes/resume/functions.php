@@ -2,7 +2,7 @@
 
 function tracker_scripts() {
   wp_enqueue_script('jquery');
-  
+
   wp_enqueue_script(
 		'boostrapJS',
 		get_stylesheet_directory_uri() . '/libraries/bootstrap/js/bootstrap.js'
@@ -28,10 +28,15 @@ function tracker_scripts() {
 		get_stylesheet_directory_uri() . '/libraries/angularjs/angular-route.js'
 	);
 
+  wp_register_script(
+    'angularjs-cookies',
+    get_stylesheet_directory_uri() . '/libraries/angularjs/angular-cookies.js'
+  );
+
 	wp_enqueue_script(
 		'app',
 		get_stylesheet_directory_uri() . '/app/app.js',
-		array( 'angularjs', 'angularjs-route' )
+		array( 'angularjs', 'angularjs-route', 'angularjs-cookies' )
 	);
 
   wp_enqueue_script(
@@ -48,65 +53,74 @@ function tracker_scripts() {
   wp_enqueue_script(
     'tracker-controller',
     get_stylesheet_directory_uri() . '/app/js/controllers/tracker/tracker.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs', 'angularjs-cookies' )
   );
 
   wp_enqueue_script(
     'tracker-steps-controller',
     get_stylesheet_directory_uri() . '/app/js/controllers/tracker/tracker-steps.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
 
   wp_enqueue_script(
     'tracker-timer-controller',
     get_stylesheet_directory_uri() . '/app/js/controllers/tracker/timer.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
   wp_enqueue_script(
     'tracker-progress-bar-controller',
     get_stylesheet_directory_uri() . '/app/js/controllers/tracker/progress-bar.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
 
   wp_enqueue_script(
     'tracker-modal-controller',
     get_stylesheet_directory_uri() . '/app/js/controllers/tracker/modal.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
+  );
+
+  // Tracker App Directives
+  wp_enqueue_script(
+    'tracker-directive',
+    get_stylesheet_directory_uri() . '/app/js/directives/tracker/tracker.js',
+    array( 'angularjs', 'angularjs-cookies' )
   );
 
   wp_enqueue_script(
-    'tracker-modal-body-controller',
-    get_stylesheet_directory_uri() . '/app/js/controllers/tracker/modal-body.js',
-    array( 'angularjs', 'angularjs-route' )
-  );
-  // Tracker App Directives
-  wp_enqueue_script(
     'tracker-steps-directive',
     get_stylesheet_directory_uri() . '/app/js/directives/tracker/tracker-steps.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
 
   wp_enqueue_script(
     'tracker-timer-directive',
     get_stylesheet_directory_uri() . '/app/js/directives/tracker/timer.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
+
   wp_enqueue_script(
     'tracker-progress-bar-directive',
     get_stylesheet_directory_uri() . '/app/js/directives/tracker/progress-bar.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
 
   wp_enqueue_script(
     'tracker-modal-directive',
     get_stylesheet_directory_uri() . '/app/js/directives/tracker/modal.js',
-    array( 'angularjs', 'angularjs-route' )
+    array( 'angularjs' )
   );
 
   wp_enqueue_script(
-    'tracker-modal-body-directive',
-    get_stylesheet_directory_uri() . '/app/js/directives/tracker/modal-body.js',
-    array( 'angularjs', 'angularjs-route' )
+    'when-ready-directive',
+    get_stylesheet_directory_uri() . '/app/js/directives/tracker/whenReady.js',
+    array( 'angularjs' )
+  );
+
+  // Tracker App Services
+  wp_enqueue_script(
+    'tracker-database-service',
+    get_stylesheet_directory_uri() . '/app/js/services/tracker/tracker-database.js',
+    array( 'angularjs' )
   );
 
 }
@@ -136,6 +150,14 @@ function tracker_styles() {
 }
 
 function tracker_localized() {
+  wp_localize_script(
+    'tracker-database-service',
+    'WordpressData',
+    array(
+      'ajaxurl' => admin_url('admin-ajax.php'),
+      'currentUser' => wp_get_current_user()
+    )
+  );
   wp_localize_script(
     'routes',
     'localizedRoute',

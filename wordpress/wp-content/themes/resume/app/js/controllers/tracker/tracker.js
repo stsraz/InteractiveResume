@@ -1,56 +1,54 @@
 (function(){
   angular.module('trackerApp')
-    .controller('TrackerController',function($scope){
+    .controller('TrackerController',function($scope,$cookieStore,trackerDatabase){
       // Status Variables
+      $scope.currentUser = WordpressData.currentUser; /*setDisplayName(WordpressData.currentUser;)*/
+      //$scope.assignedStore = {}; /* trackerDatabase.getAssignedStore($scope.currentUser); */
+      $scope.trackerRun = false;
       $scope.pause = false;
-      $scope.trackerMode = 'start';
+      $scope.modalState = '';
+      $scope.modalShow = false;
       // Tracking Object Information
-      var uniqueIdMaster = "Store Number";
-      var uniqueInfo1 = "EON";
-      var uniqueInfo2 = "TC";
-      var uniqueInfo3 = "Location"
-      $scope.trackerHeader = uniqueIdMaster + " | " + uniqueInfo1 + " | " + uniqueInfo2 + " | " + uniqueInfo3;
+      $scope.sessionInfo = [];
+      $scope.trackerHeader = "Store Number | EON | TC | Location";
       // Current Step
       $scope.currentStep = 1;
-      $scope.getStep = function() {
-        return $scope.currentStep;
-      };
-      $scope.setStep = function(newStep) {
-        $scope.currentStep = newStep;
-        return $scope.currentStep;
-      };
       // Pause
-      $scope.setPause = function() {
-        $scope.pause=true;
-        return $scope.pause;
-      };
-      $scope.clearPause = function() {
-        $scope.pause=false;
-        return $scope.pause;
-      };
       $scope.togglePause = function() {
-        var pause = $scope.pause ? $scope.clearPause() : $scope.setPause();
-      };
-      $scope.isPause = function() {
-        return $scope.pause;
+        $scope.pause = !$scope.pause;
       };
       // Back
       $scope.goBack = function() {
-        var backOne = $scope.currentStep - 1;
-        $scope.checkBack() ? $scope.setStep(backOne) : $scope.setStep(1);
-      };
-      $scope.checkBack = function() {
-        if(($scope.getStep() - 1) != 0) {return true;}
-        else {return false;};
+        if($scope.currentStep === 1) {return};
+        $scope.currentStep = --$scope.currentStep;
       };
       // Next
       $scope.goNext = function() {
-        var nextOne = $scope.currentStep + 1;
-        $scope.checkNext() ? $scope.setStep(nextOne) : $scope.setStep(10);
+        if($scope.currentStep === 10) {return};
+        $scope.currentStep = ++$scope.currentStep;
       };
-      $scope.checkNext = function() {
-        if(($scope.getStep() + 1) != 11) {return true;}
-        else {return false;};
+      // Show modal
+      $scope.showModal = function(modalType) {
+        $scope.modalState = modalType;
+        $scope.modalShow = true;
+      }
+      // On Page Load
+      $scope.onLoad = function() {
+        $cookieStore.put('TrackerCookie','store:S10000;location:Denver,CO;step:4');
+        // Check for cookie; Use cookie service
+        var trackerCookie = $cookieStore.get('TrackerCookie');
+        if(trackerCookie) {
+          var cookieSplit = trackerCookie.split(';');
+          for(var i=0;i<cookieSplit.length;i++) {
+            var keypair = cookieSplit[i].split(':');
+            $scope.sessionInfo[keypair[0]] = keypair[1];
+          };
+          $scope.showModal('resume');
+        };
+        // If none, query database with username
+        //    If activation started, confirm modal, start with returned data, build a cookie
+        //    If activation scheduled, confirm assignment, confirm modal, start
+        // If none, select a store modal
       };
     });
 })();

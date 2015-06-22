@@ -4,11 +4,25 @@
       <div class="modal-header">
         <h3>Angular Tracker 1.0</h3>
       </div>
-      <div class="modal-body" modal-body>
+      <div class="modal-body">
+        <div ng-if="checkState('choose')">
+          <p>Choose</p>
+        </div>
+        <div ng-if="checkState('resume')">
+          <p>For best performance, please ensure your browser is not blocking cookies</p>
+          <p>Found scheduled activation for Store {{modalData.store}} in {{modalData.location}}.</p>
+          <p>Is this correct?</p>
+        </div>
+        <div ng-if="checkState('resume-no-cookie')">
+          <p>ERROR: Resuming data corrupted or can not be found.</p>
+          <p>For best performance, please ensure your browser is not blocking cookies</p>
+          <p>Found activation records for Store {{modalData.store}} in {{modalData.location}}.</p>
+          <p>Is this correct?</p>
+        </div>
       </div>
       <div class="modal-footer">
-        <button>Start</button>
-        <button>Cancel</button>
+        <button ng-click="start()">Start</button>
+        <button ng-click="dismiss()">Cancel</button>
       </div>
     </div>
   </div>

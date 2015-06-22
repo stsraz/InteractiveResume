@@ -5,12 +5,18 @@
           restrict: 'E',
           replace: true,
           scope: {
-            mode: '='
+            modalState: '=state',
+            modalShow: '=show',
+            modalData: '=data',
+            run: '=run'
           },
           link: function(scope,element,attrs) {
-            element.modal('show');
+            scope.$watch('modalShow', function(newValue) {
+              newValue ? element.modal('show') : element.modal('hide');
+            });
           },
-          templateUrl: localizedRoute.partials + 'directive/tracker/modal.html'
+          templateUrl: localizedRoute.partials + 'directive/tracker/modal.html',
+          controller: 'ModalController'
         };
       });
 })();

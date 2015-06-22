@@ -9,8 +9,6 @@
         templateUrl: localizedRoute.partials + 'routes/skills/index.html'
       }).when('/tracker', {
         templateUrl: localizedRoute.partials + 'routes/tracker/index.html',
-        controller: 'TrackerController',
-        controllerAs: 'TrackerCtrl'
       }).when('/contact', {
         templateUrl: localizedRoute.partials + 'routes/contact/index.html'
       }).otherwise({redirectTo: '/'});
